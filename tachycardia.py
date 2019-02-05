@@ -8,13 +8,22 @@ BME547 Homework 4
 Travis CI and Continuous Integration
 """
 
+
 def getString():
     string = input("Please enter your word:\n")
     return string
 
+def stripString(string):
+    # define punctuation
+    punctuations = ''' !()-[]{};:'"\,<>./?@#$%^&*_~'''
+    strippedString = ""
+    for char in string:
+        if char not in punctuations:
+            strippedString = strippedString + char
+    return strippedString.lower()
 
 def is_tachycardic():
-    string = getString()    
+    string = stripString(getString())
     return string, True
 
     
