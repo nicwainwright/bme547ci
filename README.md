@@ -12,4 +12,4 @@ It will prompt the user to input their **string**
 + what the similarity ratio of the inputted and expected strings are
 
 ### Function
-```tachycardia.py``` first removes all punctuation and whitespace from the string. It then compares it directly to *tachycardia*. It uses the ```SequenceMatcher``` function to also allow almost-similar string to pass as **True**
+```tachycardia.py``` first removes all punctuation and whitespace from the string. It then compares it directly to *tachycardia*. It uses the ```SequenceMatcher``` function to also allow almost-similar strings to pass as **True**
