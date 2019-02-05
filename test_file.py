@@ -12,10 +12,20 @@ test_file.py for unit testing
 
 
 import tachycardia
-import math
 import pytest
 import mock
 
+
+# test inputs that should yield similarities because they directly contain
+# the word 'tachycardia' after removing punctuation
+@pytest.mark.parametrize("string", [("tachycardia"), ("tachycardiaolas"),
+                                    ("tachycar<>(*&^$d   ia"),
+                                    ("      tachycardia    "),
+                                    ("tachycardia    "),
+                                    ("   tachycardia")])
+def testTrueDirect(string):
+    myString, result = tachycardia.is_tachycardic(string)
+    assert result is True
 
 # def testInput():
 #    with mock.patch.object(__builtins__, 'input', lambda: 'nicolas'):
