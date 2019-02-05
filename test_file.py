@@ -18,26 +18,44 @@ import mock
 
 # test inputs that should yield similarities because they directly contain
 # the word 'tachycardia' after removing punctuation
-@pytest.mark.parametrize("string", [("tachycardia"), ("tachycardiaolas"),
-                                    ("tachycar<>(*&^$d   ia"),
+@pytest.mark.parametrize("string", [("tachycardia"), ("tachycar<>(*&^$d   ia"),
                                     ("      tachycardia    "),
-                                    ("tachycardia    "),
+                                    ("tachycardia    "), ("tachycardiaolas"),
                                     ("   tachycardia")])
-def testTrueDirect(string):
+def testTrue_Direct(string):
+    myString, result = tachycardia.is_tachycardic(string)
+    assert result is True
+
+
+# test inputs that should yield similarities because they directly contain
+# the word 'tachycardia' after removing punctuation
+@pytest.mark.parametrize("string", [("nicolas"), ("1234"), (""),
+                                    ("Ilove this place"),
+                                    ("edm is blender music to some"),
+                                    ("   "), ("")])
+def testFalse_Direct(string):
+    myString, result = tachycardia.is_tachycardic(string)
+    assert result is False
+
+
+# EXTRA CREDIT
+# test strings that are similar to tachycardia, and thus should pass
+@pytest.mark.parametrize("string", [("tchycrd"), ("taychar<>(*&^$d   ia"),
+                                    ("      tachyracdia    "),
+                                    ("tachycarida    "), ("tchycrd"),
+                                    ("   aycaria")])
+def testTrue_Similar_extraCredit(string):
     myString, result = tachycardia.is_tachycardic(string)
     assert result is True
 
 
 # EXTRA CREDIT
-# test strings that are similar to tachycardia, and thus should pass
-@pytest.mark.parametrize("string", [("tchycrd"), ("tachyardaiolas"),
-                                    ("taychar<>(*&^$d   ia"),
-                                    ("      tachyracdia    "),
-                                    ("tachycarida    "),
-                                    ("   aycaria")])
-def testTrueSimilar_extraCredit(string):
+# test strings that are similar to tachycardia, but different enough to fail
+@pytest.mark.parametrize("string", [("bradycardia"), ("ardiatachy"),
+                                    ("tchcrd")])
+def testFalse_Similar_extraCredit(string):
     myString, result = tachycardia.is_tachycardic(string)
-    assert result is True
+    assert result is False
 
 
 # def testInput():

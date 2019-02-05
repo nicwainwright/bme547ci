@@ -37,7 +37,7 @@ def is_tachycardic(string):
     expected = "tachycardia"
     ratio = SequenceMatcher(None, string, expected).ratio()
     print(ratio)
-    if expected in string or ratio > 0.6:
+    if expected in string or ratio > 0.75:
         result = True
     else:
         print("Failed with ratio:", ratio)
