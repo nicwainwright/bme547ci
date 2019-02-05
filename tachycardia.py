@@ -7,6 +7,7 @@ Created on Feb 5
 BME547 Homework 4
 Travis CI and Continuous Integration
 """
+from difflib import SequenceMatcher
 
 
 def getString():
@@ -33,7 +34,10 @@ def stripString(string):
 
 def is_tachycardic():
     string = stripString(getString())
-    if string.contains("tachycardia"):
+    expected = "tachycardia"
+    ratio = SequenceMatcher(None, string, expected).ratio()
+
+    if expected in string or ratio > 0.6:
         result = True
     else:
         result = False
