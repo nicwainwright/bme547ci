@@ -10,14 +10,20 @@ Travis CI and Continuous Integration
 
 def getString():
     string = input("Please enter your word:\n")
+    return string
 
 
 def is_tachycardic():
-    string = getString()
-    
+    string = getString()    
+    return string, True
+
     
 def main():
-    string = is_tachycardic()    
+    string, result = is_tachycardic()    
+    if result == True:
+        print("The string:", string, ", resembles 'tachcycardia.'")
+    else:
+        print("The string:", string, ", does not resemble 'tachcycardia.'")
 
 
 if __name__ == "__main__":
