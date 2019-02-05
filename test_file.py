@@ -13,7 +13,6 @@ test_file.py for unit testing
 
 import tachycardia
 import pytest
-import mock
 
 
 # test inputs that should yield similarities because they directly contain
@@ -23,18 +22,18 @@ import mock
                                     ("tachycardia    "), ("tachycardiaolas"),
                                     ("   tachycardia")])
 def testTrue_Direct(string):
-    myString, result = tachycardia.is_tachycardic(string)
+    myString, result, ratio = tachycardia.is_tachycardic(string)
     assert result is True
 
 
-# test inputs that should yield similarities because they directly contain
+# test inputs that should yield false because they do not contain
 # the word 'tachycardia' after removing punctuation
 @pytest.mark.parametrize("string", [("nicolas"), ("1234"), (""),
                                     ("Ilove this place"),
                                     ("edm is blender music to some"),
                                     ("   "), ("")])
 def testFalse_Direct(string):
-    myString, result = tachycardia.is_tachycardic(string)
+    myString, result, ratio = tachycardia.is_tachycardic(string)
     assert result is False
 
 
@@ -45,7 +44,7 @@ def testFalse_Direct(string):
                                     ("tachycarida    "), ("tchycrd"),
                                     ("   aycaria")])
 def testTrue_Similar_extraCredit(string):
-    myString, result = tachycardia.is_tachycardic(string)
+    myString, result, ratio = tachycardia.is_tachycardic(string)
     assert result is True
 
 
@@ -54,10 +53,5 @@ def testTrue_Similar_extraCredit(string):
 @pytest.mark.parametrize("string", [("bradycardia"), ("ardiatachy"),
                                     ("tchcrd")])
 def testFalse_Similar_extraCredit(string):
-    myString, result = tachycardia.is_tachycardic(string)
+    myString, result, ratio = tachycardia.is_tachycardic(string)
     assert result is False
-
-
-# def testInput():
-#    with mock.patch.object(__builtins__, 'input', lambda: 'nicolas'):
-#        assert isinstance(tachycardia.getString(), str)
