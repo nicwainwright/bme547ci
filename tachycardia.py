@@ -33,19 +33,21 @@ def stripString(string):
 
 
 def is_tachycardic(string):
+    string = stripString(string)
     expected = "tachycardia"
     ratio = SequenceMatcher(None, string, expected).ratio()
-
+    print(ratio)
     if expected in string or ratio > 0.6:
         result = True
     else:
+        print("Failed with ratio:", ratio)
         result = False
 
     return string, result
 
 
 def main():
-    originalString = stripString(getString())
+    originalString = getString()
     string, result = is_tachycardic(originalString)
     if result is True:
         print("The string:", string, ", resembles 'tachcycardia.'")

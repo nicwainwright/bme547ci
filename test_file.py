@@ -27,6 +27,19 @@ def testTrueDirect(string):
     myString, result = tachycardia.is_tachycardic(string)
     assert result is True
 
+
+# EXTRA CREDIT
+# test strings that are similar to tachycardia, and thus should pass
+@pytest.mark.parametrize("string", [("tchycrd"), ("tachyardaiolas"),
+                                    ("taychar<>(*&^$d   ia"),
+                                    ("      tachyracdia    "),
+                                    ("tachycarida    "),
+                                    ("   aycaria")])
+def testTrueSimilar_extraCredit(string):
+    myString, result = tachycardia.is_tachycardic(string)
+    assert result is True
+
+
 # def testInput():
 #    with mock.patch.object(__builtins__, 'input', lambda: 'nicolas'):
 #        assert isinstance(tachycardia.getString(), str)
