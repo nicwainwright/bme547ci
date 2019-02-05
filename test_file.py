@@ -17,6 +17,6 @@ import pytest
 import mock
 
 
-def testInput():
-    with mock.patch.object(__builtins__, 'input', lambda: 'nicolas'):
-        assert isinstance(tachycardia.getString(), str)
+# def testInput():
+#    with mock.patch.object(__builtins__, 'input', lambda: 'nicolas'):
+#        assert isinstance(tachycardia.getString(), str)
