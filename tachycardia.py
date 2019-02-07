@@ -51,11 +51,11 @@ def main():
     originalString = getString()
     string, result, ratio = is_tachycardic(originalString)
     if result is True:
-        print("The string:", string, ", resembles 'tachcycardia' with ratio",
-              ratio)
+        print("The string:", string, ", DOES resemble 'tachcycardia' with "
+              "similarity ratio", ratio)
     else:
-        print("The string:", string, ", does not resemble 'tachcycardia' with "
-              "ratio", ratio)
+        print("The string:", string, ", DOES NOT resemble 'tachcycardia' with"
+              " similarity ratio", ratio)
 
 
 if __name__ == "__main__":
